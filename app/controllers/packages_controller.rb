@@ -19,20 +19,22 @@ class PackagesController < ApplicationController
     def edit
     end
     def update
-        @package = Package.new(package_params)
-        if (@package.save)
+        if(@package.update(package_params))
             redirect_to @package
         else
             render :edit
         end
     end
     def destroy
+        @package.delete
+
+        redirect_to packages_path
     end
 
     private
 
     def package_params
-        params.require(:package).permit(:name,:price,:hour,:notes)
+        params.require(:package).permit(:name,:price,:hours,:notes)
     end
 
     def find_package
