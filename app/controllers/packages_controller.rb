@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+    before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
     before_action :find_package, only: [:show,:edit,:update,:destroy]
     def index
         @packages =Package.all
