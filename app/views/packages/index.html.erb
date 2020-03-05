@@ -1,0 +1,12 @@
+<h1>All Packages</h1>
+
+<%= link_to 'Create a Package', new_package_path %>
+
+<% @packages.each do |package| %>
+   <p>
+   <%= package.name %> |
+   <%= link_to 'View', package_path(package) %> |
+   <%= link_to 'Edit', edit_package_path(package) %> |
+   <%= link_to 'Delete', package_path(package), method: :delete, data: {confirm: 'Are you sure?'} %> |
+   </p>
+<% end %>
