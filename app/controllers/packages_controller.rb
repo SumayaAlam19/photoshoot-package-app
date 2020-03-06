@@ -1,6 +1,8 @@
 class PackagesController < ApplicationController
     before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
     before_action :find_package, only: [:show,:edit,:update,:destroy]
+    before_action :check_user, only: [:update, :edit, :destroy]
+
     def index
         @packages =Package.all
     end
@@ -19,27 +21,45 @@ class PackagesController < ApplicationController
     end
     def edit
     end
+    # def update
+    #     if @package.update(package_params)
+    #         redirect_to @package
+    #     else
+    #         render :edit
+    #     end
+    # end
     def update
-        if(@package.update(package_params))
-            redirect_to @package
-        else
-            render :edit
+        @package = Package.find(params[:id])      
+        if @package.update(package_params)
+          redirect_to @package
+        else  
+          render 'edit'
         end
-    end
+      end
+
     def destroy
         @package.delete
 
         redirect_to packages_path
     end
 
+    def payment
+    end
+
     private
 
     def package_params
-        params.require(:package).permit(:name,:price,:hours,:notes)
+        params.require(:package).permit(:name,:price,:hours,:notes,:picture)
     end
 
     def find_package
         @package = Package.find(params[:id])
     end
+
+    def check_user
+        if current_user.id != @package.user_id
+          redirect_to root_url, alert: "You don't have permission to update or delete listing!"
+        end
+      end
 end
 

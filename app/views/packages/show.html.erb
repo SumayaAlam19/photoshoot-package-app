@@ -1,6 +1,12 @@
 <h1><%= @package.name %></h1>
+<div id= "listing-picture" class= "listing-picture">
+<% if @package.picture.attached? %>
+  <img src="<%=(url_for(@package.picture))%>">
+  <%end%>
+</div>
 <h3>Price is $<%= @package.price %></h3>
 <h3>Given hours <%= @package.hours %></h3>
 <p><%= @package.notes %></p>
 
+ <%= link_to 'Buy a Package', payment_path %> |
 <%= link_to 'Back', packages_path %>

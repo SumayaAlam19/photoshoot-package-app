@@ -1,12 +1,20 @@
 <h1>All Packages</h1>
 
-<%= link_to 'Add a Package', new_package_path %>
+<% if user_signed_in? %>
+   <%= link_to 'Add a Package', new_package_path %>
+  
+<% end %>
 
 <% @packages.each do |package| %>
    <p>
-   <%= package.name %> |
-   <%= link_to 'View', package_path(package) %> |
-   <%= link_to 'Edit', edit_package_path(package) %> |
-   <%= link_to 'Delete', package_path(package), method: :delete, data: {confirm: 'Are you sure?'} %> |
+      <%= package.name %> |
+      <%= image_tag package.picture if package.picture.attached? %>
+      <%= link_to 'View', package_path(package) %> |
+      <% if user_signed_in? %>
+         <%= link_to 'Edit', edit_package_path(package) %> |
+         <%= link_to 'Delete', package_path(package), method: :delete, data: {confirm: 'Are you sure?'} %> |
+      <% end %>
    </p>
 <% end %>
+
+<h4>To add a new Package or to buy a Package please Sign Up at the top of the page.</h4>
