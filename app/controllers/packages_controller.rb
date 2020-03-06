@@ -13,6 +13,7 @@ class PackagesController < ApplicationController
     end
     def create
         @package = Package.new(package_params)
+        @package.user_id = current_user.id
         if (@package.save)
             redirect_to @package
         else
