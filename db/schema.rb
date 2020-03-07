@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_100039) do
 
   create_table "packages", force: :cascade do |t|
     t.string "name"
-    t.decimal "price"
+    t.integer "price"
     t.integer "hours"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false

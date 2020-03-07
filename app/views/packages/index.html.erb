@@ -3,13 +3,12 @@
 
 <% if user_signed_in? %>
    <%= link_to 'Add a Package', new_package_path %>
-  
 <% end %>
 
 <% @packages.each do |package| %>
    <p>
       <%= package.name %> |
-      <%= image_tag package.picture if package.picture.attached? %>
+      <%= image_tag package.picture if package.picture.attached? %> 
       <%= link_to 'View', package_path(package) %> |
       <% if user_signed_in? %>
          <%= link_to 'Edit', edit_package_path(package) %> |
