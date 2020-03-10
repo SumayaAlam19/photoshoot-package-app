@@ -1,3 +1,26 @@
 // Place all the styles related to the packages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* To avoid the hassle of margin calculation with the default one, I have used all selector and put all margins on 0px.  */
+* {
+    margin: 0px; 
+}
+/* Created navbar id in nav tag for styling, to create the nav bar.*/
+#navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: lightcoral;
+    border: 1px solid #000;
+    width: 100vw;
+    height: 5vh;
+    justify-content: flex-start;
+    align-items:center;
+}
+
+
+img {
+    display: block;
+    width: 300px;
+    height: 200px;
+}
