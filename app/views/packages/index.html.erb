@@ -12,7 +12,7 @@
             <%= package.name %> |
             <%= image_tag package.picture if package.picture.attached? %> 
             <%= link_to 'View', package_path(package) %> |
-            <% if user_signed_in? %>
+            <% if user_signed_in? && package.user_id == current_user.id %>
                <%= link_to 'Edit', edit_package_path(package) %> |
                <%= link_to 'Delete', package_path(package), method: :delete, data: {confirm: 'Are you sure?'} %> |
             <% end %>

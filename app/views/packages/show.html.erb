@@ -8,7 +8,14 @@
 <h3>Given hours <%= @package.hours %></h3>
 <p><%= @package.notes %></p>
 
+<h3>Bookings</h3>
+<ul>
+  <% @package.bookings.each do |booking| %>
+    <li><%= booking.user.email %></li>
+  <% end %>
+</ul>
+
 <% if user_signed_in?%>
- <%= link_to 'Buy a Package', payment_path %> |
+ <%= link_to 'Book Package', payment_path %> |
  <% end %>
 <%= link_to 'Back', packages_path %>

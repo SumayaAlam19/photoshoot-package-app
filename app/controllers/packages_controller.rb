@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
-    before_action :find_package, only: [:show,:edit,:update,:destroy]
     before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
+    before_action :find_package, only: [:edit,:update,:destroy]
     before_action :check_user, only: [:edit,:update,:destroy]
 
     def index
@@ -8,6 +8,7 @@ class PackagesController < ApplicationController
     end
 
     def show
+        @package = Package.includes(bookings: [:user]).find(params[:id])
     end
 
     def new
@@ -56,9 +57,8 @@ class PackagesController < ApplicationController
     end
 
     def check_user
-        if current_user != @package.user
+       return true if current_user.id == @package.user_id 
           redirect_to root_url, alert: "You don't have permission to update or delete listing!"
-        end
-      end
+    end
 end
 
