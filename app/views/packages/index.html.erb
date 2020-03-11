@@ -2,12 +2,11 @@
 <h4>Note: To add a new Package or to buy a Package please Sign Up or Sign In at the top of the page.</h4>
 
 <% if user_signed_in? %>
-<%= link_to 'Dashboard', dashboard_index_path %>
+<%= link_to 'Dashboard', dashboard_index_path %> |
    <%= link_to 'Add a Package', new_package_path %>
 <% end %>
 
 <div class=photo_container>
-   <div class=photo_box>
       <% @packages.each do |package| %>
          <p>
             <%= package.name %> |
@@ -19,5 +18,4 @@
             <% end %>
          </p>
       <% end %>
-   </div>
 </div>

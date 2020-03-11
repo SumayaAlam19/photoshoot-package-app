@@ -1,12 +1,15 @@
 <h1>Dashboard</h1>
+<br>
 <h3>Welcome <%= current_user.email %></h3>
-
+<br>
 <h2>My Packages</h2>
 <% @packages.each do |package| %>
     <p><%= package.name %></p>
 <% end %>
-
+<br>
 <h2>My Bookings</h2>
 <% @bookings.each do |booking| %>
     <p><%= booking.package.name %></p>
 <% end %>
+<br>
+<%= link_to 'Back', packages_path %>
