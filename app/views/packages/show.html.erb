@@ -8,13 +8,6 @@
 <h4>Given hours <%= @package.hours %></h4>
 <p><%= @package.notes %></p>
 
-<%# <h4>Bookings</h4> %>
-<ul>
-  <% @package.bookings.each do |booking| %>
-    <li><%= booking.user.email %></li>
-  <% end %>
-</ul>
-
 <% if user_signed_in?%>
  <%= link_to 'Buy Package', bookings_path(package_id: @package.id), method: :post %> |
  <% end %>
