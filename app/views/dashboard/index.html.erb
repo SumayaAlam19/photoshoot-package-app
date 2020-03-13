@@ -2,12 +2,12 @@
 <br>
 <h3>Welcome <%= current_user.email %></h3>
 <br>
-<h2>My Packages</h2>
+<h2>Added Packages by current user:</h2>
 <% @packages.each do |package| %>
     <p><%= package.name %></p>
 <% end %>
 <br>
-<h2>My Bookings</h2>
+<h2>Bookings made by current user</h2>
 <% @bookings.each do |booking| %>
     <p><%= booking.package.name %></p>
 <% end %>

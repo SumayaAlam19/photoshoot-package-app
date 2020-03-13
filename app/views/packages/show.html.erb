@@ -16,6 +16,6 @@
 </ul>
 
 <% if user_signed_in?%>
- <%= link_to 'Buy Package', payment_path %> |
+ <%= link_to 'Buy Package', bookings_path(package_id: @package.id), method: :post %> |
  <% end %>
 <%= link_to 'Back', packages_path %>
